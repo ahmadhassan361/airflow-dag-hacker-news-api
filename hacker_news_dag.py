@@ -22,8 +22,8 @@ def get_db_connection():
             database="hacker_new_db",
             user="hacker",
             password="HackerDB#33",
-            host="host.docker.internal",
-            port="5422"
+            host="130.211.206.126",
+            port="5432"
         )
         return conn
     except Exception as e:
@@ -58,7 +58,7 @@ def api_task():
     stories = res.json()
     print(stories)
 
-    for story_id in stories:
+    for story_id in stories[:10]:
         # Fetch Item
         time.sleep(1)
         res = requests.get(ITEM_URL + '{}.json'.format(story_id))
